@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Nemanja Davidovic</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/7b7978fbc1.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+
+    <link id="theme" rel="stylesheet" href="">
+
+    <!-- Style -->
+    <style>
+        html, body, .container {
+            height: 100%;
+            background-color: #effcf1;
+        }
+        h1 {
+            color: #1a231b;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            padding-bottom: 20px;
+        }
+        p {
+            color: #2d3b2e;
+            font-size: 1.3rem;
+            padding-bottom: 30px;
+        }
+        .email-response {
+            height: 70%;
+            border: 3px solid #c5e0c9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="showcase-nav">
+        <ul class="nav justify-content-end pr-4">
+            <li class="nav-item">
+              <a class="nav-link" href="{% static 'portfolio/resume.pdf' %}" target="_blank">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/0mnadren" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/nemanja-davidovi%C4%87-96a89b210/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="alert alert-success mt-4 mb-4" role="alert">
+             Your message was sent successfully!
+        </div>
+        <div class="email-response">
+            <h1>Thanks for reaching out!</h1>
+            <p>I will do my best to get back to you in a timely manner.</p>
+            <a class="btn btn-success" href="{% url 'home' %}">HOME PAGE</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
