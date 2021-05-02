@@ -1,9 +1,12 @@
 const themeMode = document.getElementsByClassName('theme-mode');
+const defaultMode = 'dark';
 
 let theme = localStorage.getItem('theme');
 
 if (theme == null) {
-    setTheme('dark');
+    setTheme(defaultMode);
+    localStorage.setItem('theme', defaultMode);
+    theme = defaultMode;
 } else {
     setTheme(theme);
 }
