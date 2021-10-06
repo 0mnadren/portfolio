@@ -245,8 +245,11 @@ a:hover {
 .projectModel-text h3, p {
     margin: 0;
     text-align: center;
-    padding-bottom: 10px;
     color: var(--primary-text);
+}
+
+.projectModel-text h3 {
+    padding-bottom: 10px;
 }
 
 .projectModel-text {
