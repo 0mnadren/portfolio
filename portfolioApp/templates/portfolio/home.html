@@ -131,17 +131,29 @@
             </div>
             <form id="contact-form" method="POST" action="{% url 'send-email' %}">
                 {% csrf_token %}
-                <label>Name</label>
-                <input class="input-field" type="text" name="name">
+                <div class="form-div">
+                    <label>Name</label>
+                    <input id="input-name" class="input-field" type="text" name="name" required>
+                    <small class="invalid-input-small"></small>
+                </div>
 
-                <label>Subject</label>
-                <input class="input-field" type="text" name="subject">
+                <div class="form-div">
+                    <label>Subject</label>
+                    <input id="input-subject" class="input-field" type="text" name="subject" required>
+                    <small class="invalid-input-small"></small>
+                </div>
 
-                <label>Email</label>
-                <input class="input-field" type="text" name="email">
+                <div class="form-div">
+                    <label>Email</label>
+                    <input id="input-email" class="input-field" type="email" name="email" required>
+                    <small class="invalid-input-small"></small>
+                </div>
 
-                <label>Message</label>
-                <textarea class="input-field" name="message"></textarea>
+                <div class="form-div">
+                    <label>Message</label>
+                    <textarea id="input-message" class="input-field" name="message" required></textarea>
+                    <small class="invalid-input-small"></small>
+                </div>
 
                 <input id="submit-btn" type="submit" value="Send">
             </form>

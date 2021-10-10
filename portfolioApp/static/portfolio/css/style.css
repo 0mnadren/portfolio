@@ -377,7 +377,6 @@ li img {
 #contact-form textarea {
 	min-height: 100px;
 	font-size: 15px;
-	margin-bottom: 10px;
 }
 
 .input-field {
@@ -393,7 +392,7 @@ li img {
 }
 
 #submit-btn {
-	margin-top: 10px;
+	margin-top: 20px;
 	width: 100%;
 	padding-top: 10px;
 	padding-bottom:10px;
@@ -405,6 +404,29 @@ li img {
 
 #submit-btn:hover {
     opacity: 0.6;
+}
+
+
+input:focus-visible {
+    box-shadow: 0 0 5px 1px var(--cta-color);
+}
+
+input:focus:invalid {
+    box-shadow: 0 0 5px 1px var(--cta-color);
+}
+
+.invalid-input-small {
+    font-weight: bold;
+    color: var(--cta-color);
+    padding-top: 4px;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
 }
 
 
