@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nemanja Davidovic</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -54,18 +54,68 @@
         <div class="project-title">
             <h2 id="project-link">Projects</h2>
         </div>
+        <!-- Backdrop and Modal -->
+        <div id="backdrop"></div>
         <div class="project-content">
 
             <!-- Django Model -->
             {% for project in projects reversed %}
-            
-            <div class="django-projectModel">
-                <div class="projectModel-image">
-                    <img src="{{ project.image.url }}" alt="Project's thumbnail">
+
+            <!--Content Modal-->
+            <div class="my-modal my-card" id="add-modal{{ forloop.counter0 }}">
+             <div class="my-modal-box">
+                <div class="my-modal-content">
+                    <div class="my-modal-title">
+                        <h2>{{ project.title }}</h2>
+                    </div>
+                    <div class="my-modal-description">
+                        <p>{{ project.detail_description }}</p>
+                        <p>Tech Stack: {{ project.technologies }}</p>
+                    </div>
+                    <div class="my-modal-action">
+                        {% if project.live_url %}
+                            <a href="{{ project.live_url }}" target="_blank"><button class="project-btn">Live</button></a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank"><button class="project-btn">GitHub</button></a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="projectModel-text">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
+  
+                <!--Content Carousel-->
+                <div id="carouselExampleControls{{ forloop.counter0 }}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in project.projectimage_set.all %}
+                        {% if forloop.first %}
+                          <div class="carousel-item active">
+                        {% else %}
+                          <div class="carousel-item">
+                        {% endif %}
+                            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image }}">
+                          </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls{{ forloop.counter0 }}" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls{{ forloop.counter0 }}" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+             </div>
+            </div>
+            <!--Projects Models-->
+            <div class="django-projectModel">
+                <div class="projectModel-upper">
+                    <div class="projectModel-image">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    </div>
+                    <div class="projectModel-text">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                    </div>
                 </div>
                 <div class="projectModel-links">
                     {% if project.live_url %}

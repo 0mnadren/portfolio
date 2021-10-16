@@ -8,6 +8,8 @@
     --tertiary-text: #465e49;
     --secondary-text: #2d3b2e;
     --primary-text: #1a231b;
+    
+    --background-modal-color: #46774c;
 }
 
 * {
@@ -221,14 +223,20 @@ a:hover {
 
 .django-projectModel {
     display: grid;
-    grid-template-rows: 1fr 1fr 60px;
+    grid-template-rows: 3fr 4.5rem;
     max-width: 22rem;
-    height: 26.5rem;
+    min-width: 22rem;
+    height: 25.5rem;
     border: 3px solid var(--accent-color);
     background-color: var(--card-color);
 }
 
-.django-projectModel:hover {
+.projectModel-upper {
+    cursor: pointer;
+}
+
+.projectModel-upper:hover {
+    transition: 0s;
     border: 3px solid var(--cta-color);
 }
 
@@ -238,10 +246,16 @@ a:hover {
 
 .projectModel-image img {
     display: block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+.projectModel-text {
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
 .projectModel-text h3, p {
     margin: 0;
     text-align: center;
@@ -249,14 +263,16 @@ a:hover {
 }
 
 .projectModel-text h3 {
-    padding-bottom: 10px;
+    padding-bottom: 0.8rem;
 }
 
-.projectModel-text {
-    padding: 1rem;
+.projectModel-text p {
+    padding: 0.4rem;
 }
 
 .projectModel-links {
+    min-height: 4.5rem;
+    padding-top: 0.5rem; 
     justify-self: center;
 }
 
@@ -275,6 +291,114 @@ a:hover {
 .project-btn:hover {
     opacity: 0.7;
 }
+
+
+
+/* MODAL AND BACKDROP */
+
+#backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    pointer-events: none;
+    display: none;
+  }
+  
+#backdrop.visible {
+    display: block;
+    pointer-events: all;
+}
+
+.my-card {
+    background: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.my-modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 80%;
+  top: 15vh;
+  left: 10%;
+}
+
+.my-modal.visible {
+  display: block;
+  animation: fade-slide-in 0.3s ease-out forwards;
+}
+
+.my-modal-box {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+}
+
+.my-modal-content {
+    padding: 2rem;
+}
+
+.my-modal-title {
+    text-align: center;
+}
+
+.my-modal-title h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.my-modal-description p {
+    white-space: pre-wrap;
+    text-align: start;
+    padding-top: 0.8rem;
+    padding-bottom: 1.2rem;
+}
+
+.my-modal-action {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+
+    padding: 2rem;
+
+    background-color: var(--background-modal-color);
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.carousel-item  {
+    height: 540px;
+}
+
+.carousel-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.carousel-control-prev-icon { 
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231a231b' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%231a231b' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
+}
+
+
+
+
 
 
 /* About me section */
@@ -407,6 +531,8 @@ li img {
 }
 
 
+
+/* VALIDATION FORM */
 input:focus-visible {
     box-shadow: 0 0 5px 1px var(--cta-color);
 }
@@ -447,14 +573,14 @@ footer h6 {
 }
 
 /* Media Query */
-@media (max-width:1712px) {
+@media screen and (max-width:1712px) {
     .about-content {
         padding: 100px 0;
         padding-left: 20px;
     }
 }
 
-@media (max-width:1480px) {
+@media screen and (max-width:1480px) {
     .about-content {
        display: flex;
        flex-direction: column;
@@ -468,7 +594,41 @@ footer h6 {
     }
 }
 
-@media (max-width:1100px) {
+@media screen and (max-width: 1440px) {
+    .my-modal {
+        top: 5vh;
+    }
+
+    .my-modal-content {
+        padding: 1rem;
+    }
+
+    .my-modal-box {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow-y: visible;
+    }
+
+    .my-modal-title h2 {
+        padding: 0;
+    }
+
+    .carousel {
+        border-radius: 10px;
+        align-items: flex-start;
+        max-height: 450px;
+    }
+
+    .carousel-item {
+        height: 350px;
+    }
+
+    .carousel-item img {
+        object-fit: fill;
+    }
+}
+
+@media screen and (max-width:1100px) {
     .project-content {
         padding-top: 120px;
         padding-bottom: 120px;
@@ -476,7 +636,7 @@ footer h6 {
     }
 }
 
-@media (max-width:961px) {
+@media screen and (max-width:966px) {
     .project-content {
         padding-top: 100px;
         padding-bottom: 100px;
@@ -486,9 +646,17 @@ footer h6 {
         align-items: center;
         gap: 60px;
     }
+
+    .carousel {
+        max-height: 520px;
+    }
+
+    .carousel-item {
+        height: auto;
+    }
 }
 
-@media (max-width:860px) {
+@media screen and (max-width:860px) {
     .skills-section {
         display: flex;
         flex-direction: column;
@@ -505,19 +673,29 @@ footer h6 {
     }
 }
 
-@media (max-width:555px) {
+@media screen and (max-width:555px) {
     .django-projectModel {
         min-width: 20rem;
     }
+
+    .my-modal-box {
+        max-height: 550px;
+        overflow-y: scroll;
+        border-radius: 10px;
+    }
 }
 
-@media (max-width:410px) {
+@media screen and (max-width:410px) {
+    .carousel {
+        display: none;
+    }
+
     .expertise-content {
         gap: 60px;
     }
 }
 
-@media (max-width:360px) {
+@media screen and (max-width:360px) {
     .expertise-content {
         gap: 30px;
     }
@@ -528,12 +706,24 @@ footer h6 {
 }
 
 
-@media (max-width:320px) {
+@media screen and (max-width:320px) {
     .django-projectModel {
         min-width: 17rem;
     }
 
     #profile_pic {
         margin: 0;
+    }
+
+    .showcase-content h1 {
+        font-size: 3.5em;
+    }
+}
+
+@media screen and (max-height: 740px) {
+    .my-modal-box {
+        max-height: 630px;
+        overflow-y: scroll;
+        border-radius: 10px;
     }
 }

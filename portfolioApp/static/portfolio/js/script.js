@@ -7,6 +7,10 @@ const inputMessage = document.getElementById('input-message');
 const getInTouchForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 
+const backdrop = document.getElementById('backdrop');
+const djangoModelsUpper = document.querySelectorAll('.projectModel-upper');
+
+// THEME //
 let theme = localStorage.getItem('theme');
 
 if (theme == null) {
@@ -37,6 +41,7 @@ function setTheme(mode) {
 }
 
 
+// FORM VALIDATION //
 const showError = (input, textContent) => {
     const formDiv = input.parentElement; // .form-div
     const small = formDiv.querySelector('small');
@@ -99,3 +104,37 @@ getInTouchForm.addEventListener('submit', (e) => {
         e.preventDefault();
     }
 });
+
+
+// MODAL AND BACKDROP //
+const toggleBackdrop = () => {
+    backdrop.classList.toggle('visible');
+};
+
+
+const showModalHandler = (indx) => {
+    const modal = document.getElementById('add-modal'+indx);
+    modal.classList.add('visible');
+    toggleBackdrop();
+}
+
+const closeModal = () => {
+    const modal = document.querySelectorAll('.my-modal.visible').item(0);
+    modal.classList.remove('visible');
+    toggleBackdrop();
+}
+
+
+const backdropClickHandler = () => {
+    closeModal();
+}
+
+
+for (let i=0; i < djangoModelsUpper.length; i++) {
+    djangoModelsUpper[i].addEventListener('click', showModalHandler.bind(this, i));
+}
+
+
+backdrop.addEventListener('click', backdropClickHandler);
+
+
